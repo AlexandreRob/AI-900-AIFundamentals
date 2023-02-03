@@ -36,13 +36,13 @@ $predictionKey = "9e412a537e9b4f64bf0172a40d1f2c6d"
 
 # Code to call Custom Vision service for image classification
 
-$img_num = 1
+$img_num = 11
 if ($args.count -gt 0 -And $args[0] -in (1..3))
 {
     $img_num = $args[0]
 }
 
-$img = "Users/devia.e13/Documents/GitHub/ai-900/data/vision/pred-$($img_num).jpg"
+$img = "https://raw.githubusercontent.com/AlexandreRob/AI-900-AIFundamentals/main/data/vision/pred-$($img_num).jpg"
 
 $headers = @{}
 $headers.Add( "Prediction-Key", $predictionKey )
@@ -59,3 +59,9 @@ $result = Invoke-RestMethod -Method Post `
 $prediction = $result | ConvertFrom-Json
 
 Write-Host ("`n",$prediction.predictions[0].tagName, "`n")
+
+
+
+# "https://github.com/AlexandreRob/AI-900-AIFundamentals/blob/main/data/vision/pred-11.jpg"
+
+# "https://github.com/AlexandreRob/AI-900-AIFundamentals/tree/main/data/vision/pred-1.jpg"
